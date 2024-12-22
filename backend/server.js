@@ -25,15 +25,15 @@ app.use("/api", authRoutes);
 app.use(express.static(path.resolve("./public")));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/api/videos", require("./routes/videoRoutes"));
-app.use(express.static(path.resolve(__dirname, "..", "frontend", "build"))); 
+app.use(express.static("./frontend/build")); 
 
 // Serve static assets if in production
-if (process.env.NODE_ENV === "production") {
+
   // Serve index.html on all routes (except API routes)
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "..", "frontend", "build", "index.html")); // Corrected path
+    res.sendFile(path.resolve(__dirname,  "frontend", "build", "index.html")); // Corrected path
   });
-}
+
 
 // Default route to send the index.html in development
 app.get("/", (req, res) => {
