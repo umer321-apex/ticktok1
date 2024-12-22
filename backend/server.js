@@ -26,7 +26,9 @@ app.use(express.static(path.resolve("./public")));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/api/videos", require("./routes/videoRoutes"));
 app.use(express.static("./frontend/build")); 
-
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
+});
 // Serve static assets if in production
 
   // Serve index.html on all routes (except API routes)
